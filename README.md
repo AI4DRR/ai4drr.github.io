@@ -1,6 +1,6 @@
-# AI4DRR Organization Pages
+# AI4DRR Pages
 
-This repository contains the source files for the public landing page of the AI4DRR organization.
+This repository contains the source files for the public landing page of the 'Artificial Intelligence for Disaster Risk Reduction (AI4DRR) hub.
 
 Public website:
 
@@ -8,13 +8,9 @@ https://ai4drr.github.io/
 
 ## Purpose
 
-This website serves as the main landing page for AI4DRR and provides an entry point to its projects and public resources.
+AI4DRR is a hub to showcase experiments, prototypes, and proofs of concept exploring how Artificial Intelligence (AI) and Machine Learning (ML) can support Disaster Risk Reduction (DRR).
 
-Individual AI4DRR projects may have their own project pages, for example:
-
-- Fonte — https://ai4drr.github.io/fonte/
-- Mi-CAT — https://ai4drr.github.io/Mi-CAT/
-- Chatbot — https://ai4drr.github.io/chatbot/
+Our work combines practical experimentation with academic and methodological rigour, applying sound research methods, transparent approaches, and critical evaluation to explore new ways of understanding risk, strengthening preparedness, improving situational awareness, and supporting better decision-making for DRR.
 
 ## Editing the Website
 
