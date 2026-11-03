@@ -1,13 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="description" content="Project page description goes here.">
+  <meta name="keywords" content="Project, Keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI4DRR</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- Bulma + icons (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <style>
+    /* ===== Base (from template's index.css) ===== */
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      /* Sticky footer: push footer to the bottom on short pages */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .footer {
+      margin-top: auto;
+    }
+
+    .footer .icon-link {
+      font-size: 25px;
+      color: #000;
+    }
+
+    .link-block a {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .dnerf {
+      font-variant: small-caps;
+    }
+
+    .teaser .hero-body {
+      padding-top: 0;
+      padding-bottom: 3rem;
+    }
+
+    .teaser {
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    .publication-title,
+    .publication-authors {
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    .publication-venue {
+      color: #555;
+      width: fit-content;
+      font-weight: bold;
+    }
+
+    .publication-awards {
+      color: #ff3860;
+      width: fit-content;
+      font-weight: bolder;
+    }
+
+    .publication-authors a {
+      color: hsl(204, 86%, 53%) !important;
+    }
+
+    .publication-authors a:hover {
+      text-decoration: underline;
+    }
+
+    .author-block {
+      display: inline-block;
+    }
+
+    .footer-tagline {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.15rem;
+      color: #363636;
+    }
+
+    .footer-legal {
+      font-size: 0.85rem;
+      color: #7a7a7a;
+    }
+
+    /* Grey, non-clickable tab for restricted / work-in-progress projects */
+    .button.is-restricted {
+      background-color: #b5b5b5;
+      border-color: transparent;
+      color: #fff;
+      cursor: default;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .button.is-restricted:hover,
+    .button.is-restricted:focus {
+      background-color: #b5b5b5;
+      border-color: transparent;
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .restricted-note {
+      color: #7a7a7a;
+      font-style: italic;
+    }
+
+    /* ===== Tighter vertical spacing ===== */
+    .hero .hero-body {
+      padding-top: 1.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .publication-title {
+      margin-bottom: 1rem !important;
+    }
+
+    .publication-links-column {
+      padding-top: 0.75rem;
+      padding-bottom: 0;
+    }
+
+    .section {
+      padding-top: 1.5rem;
+      padding-bottom: 2rem;
+    }
+
+    .section .title.is-3 {
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .publication-video {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+      overflow: hidden;
+      border-radius: 10px !important;
+    }
+
+    .publication-video iframe,
+    .publication-video .placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ===== Results carousel (simple scroll-snap, no plugin) ===== */
+    .results-carousel {
+      overflow-x: auto;
+      display: flex;
+      gap: 10px;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+    }
+
+    .results-carousel .item {
+      flex: 0 0 calc((100% - 20px) / 3);
+      scroll-snap-align: start;
+      overflow: hidden;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      padding: 0;
+      font-size: 0;
+    }
+
+    @media (max-width: 768px) {
+      .results-carousel .item { flex-basis: 85%; }
+    }
+
+    /* ===== Interpolation panel ===== */
+    .interpolation-panel {
+      background: #f5f5f5;
+      border-radius: 10px;
+    }
+
+    .interpolation-panel .interpolation-image {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .interpolation-panel input[type="range"] {
+      width: 100%;
+      margin: 0.75rem 0 0;
+    }
+
+    #interpolation-image-wrapper {
+      width: 100%;
+    }
+
+    /* ===== Placeholders (replace with real images/videos) ===== */
+    .placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      background: repeating-linear-gradient(45deg, #e8e8e8, #e8e8e8 12px, #f2f2f2 12px, #f2f2f2 24px);
+      color: #888;
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .placeholder .icon { margin-right: 0.5rem; }
+    .ph-16x9 { aspect-ratio: 16 / 9; }
+    .ph-4x3  { aspect-ratio: 4 / 3; }
+    .ph-1x1  { aspect-ratio: 1 / 1; }
+    .ph-teaser { aspect-ratio: 16 / 7; }
+  </style>
 </head>
 <body>
-  <h1>AI4DRR</h1>
-  <p>AI4DRR is a hub to showcase experiments, prototypes, and proofs of concept exploring how Artificial Intelligence (AI) and Machine Learning (ML) can support Disaster Risk Reduction (DRR).</p>
-  <p>Our work combines practical experimentation with academic and methodological rigour, applying sound research methods, transparent approaches, and critical evaluation to explore new ways of understanding risk, strengthening preparedness, improving situational awareness, and supporting better decision-making before, during, and after disasters.</p>
+
+<!-- ===== Title / Authors / Links ===== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">AI4DRR</h1>
+
+          <div class="column has-text-centered publication-links-column">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://ai4drr.github.io/Mi-CAT/" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                  <span>Mi-CAT</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://ai4drr.github.io/chatbot/" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                  <span>DRR Chatbot</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://ai4drr.github.io/fonte/" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                  <span>Fonte</span>
+                </a>
+              </span>
+              <!-- Restricted / work in progress: grey, not linked -->
+              <span class="link-block">
+                <span class="button is-normal is-rounded is-restricted" aria-disabled="true" title="Restricted access / work in progress">
+                  <span class="icon"><i class="fas fa-lock"></i></span>
+                  <span>Earthquake Meta-Model</span>
+                </span>
+              </span>
+              <!-- Restricted / work in progress: grey, not linked -->
+              <span class="link-block">
+                <span class="button is-normal is-rounded is-restricted" aria-disabled="true" title="Restricted access / work in progress">
+                  <span class="icon"><i class="fas fa-lock"></i></span>
+                  <span>EN Shock</span>
+                </span>
+              </span>
+              <!-- Restricted / work in progress: grey, not linked -->
+              <span class="link-block">
+                <span class="button is-normal is-rounded is-restricted" aria-disabled="true" title="Restricted access / work in progress">
+                  <span class="icon"><i class="fas fa-lock"></i></span>
+                  <span>GENDRR</span>
+                </span>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Abstract ===== -->
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            <span class="dnerf">AI4DRR</span> is a hub to showcase experiments, prototypes, and proofs of concept
+            exploring how Artificial Intelligence (AI) and Machine Learning (ML) can support Disaster Risk
+            Reduction (DRR).
+          </p>
+          <p>
+            Our work combines practical experimentation with academic and methodological rigour, applying sound
+            research methods, transparent approaches, and critical evaluation to explore new ways of understanding
+            risk, strengthening preparedness, improving situational awareness, and supporting better
+            decision-making before, during, and after disasters.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== Projects ===== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <div class="content">
+          <h2 class="title is-3">Mi-CAT</h2>
+          <p>
+            Mi-CAT is a machine-learning-integrated catastrophe modelling stack. It learns asset-level
+            vulnerability from observed damage data, fuses fragmented multi-source data into harmonised hazard,
+            exposure and loss bases, and couples the outputs with macro-fiscal models to support budget planning
+            and prevention prioritisation.
+          </p>
+          <a href="https://ai4drr.github.io/Mi-CAT/" target="_blank" rel="noopener noreferrer">See project &rarr;</a>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="content">
+          <h2 class="title is-3">DRR Chatbot</h2>
+          <p>
+            Datum is an LLM-powered conversational assistant for interrogating disaster-loss data, generating
+            visualisations and providing source citations. It gives users grounded answers, charts and supporting
+            evidence without manually constructing database queries.
+          </p>
+          <a href="https://ai4drr.github.io/chatbot/" target="_blank" rel="noopener noreferrer">See project &rarr;</a>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="content">
+          <h2 class="title is-3">Fonte</h2>
+          <p>
+            Fonte uses LLMs to extract disaster-event information from unstructured text and resolves affected locations into standardised geospatial geometries, producing structured, geolocated event records with less manual work.
+          </p>
+          <a href="https://ai4drr.github.io/fonte/" target="_blank" rel="noopener noreferrer">See project &rarr;</a>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="content">
+          <h2 class="title is-3">Earthquake Meta-Model</h2>
+          <!-- TODO: replace with the real intro text -->
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <span class="restricted-note"><i class="fas fa-lock"></i> Restricted access / work in progress</span>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="content">
+          <h2 class="title is-3">EN Shock</h2>
+          <!-- TODO: replace with the real intro text -->
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <span class="restricted-note"><i class="fas fa-lock"></i> Restricted access / work in progress</span>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="content">
+          <h2 class="title is-3">GENDRR</h2>
+          <p>
+            Persona-aware LLM approach tailoring retrieval, analysis and outputs to gender and inclusion needs,
+            prioritising sex-, age- and disability-disaggregated information and grounded DRR guidance. More
+            inclusive disaster-risk analysis, surfacing relevant disaggregated information and data gaps while
+            producing grounded, role-specific outputs.
+          </p>
+          <span class="restricted-note"><i class="fas fa-lock"></i> Restricted access / work in progress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/AI4DRR" target="_blank" rel="noopener noreferrer" title="AI4DRR on GitHub"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <!-- Tagline hidden for now; remove style to show again -->
+          <p class="footer-tagline" style="display: none;">
+            <span class="dnerf">AI4DRR</span> &mdash; exploring how AI can help reduce disaster risk.
+          </p>
+          <p class="footer-legal">
+            AI4DRR includes public, restricted-access, and work-in-progress projects. For publicly available
+            projects, licensing and usage terms are provided in the respective repository.
+            This AI4DRR GitHub is managed by the Design and Tech Team @UNDRR
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
